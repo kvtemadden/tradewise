@@ -52,7 +52,8 @@ router.delete('/jobs/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
     }
 });
-  
+
+// Updating a job record
 router.put('/jobs/:id', withAuth, async (req, res) => {
     try {
       const newJob = await Job.update(req.body, {
