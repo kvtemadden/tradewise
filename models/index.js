@@ -29,7 +29,7 @@ Comment.belongsTo(User, {
 });
 
 Comment.belongsTo(Job, {
-  foreignKey: 'blog_id',
+  foreignKey: 'job_id',
   onDelete: "cascade"
 });
 
@@ -39,7 +39,7 @@ User.hasMany(Comment, {
 });
 
 Job.hasMany(Comment, {
-  foreignKey: 'blog_id',
+  foreignKey: 'job_id',
   onDelete: "cascade"
 })
 
