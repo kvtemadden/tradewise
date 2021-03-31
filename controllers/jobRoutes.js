@@ -33,7 +33,7 @@ router.post('/jobs/new', withAuth, async (req, res) => {
 // Deleting a job record
 router.delete('/jobs/:id', withAuth, async (req, res) => {
     try {
-        const deleteJob = await Blog.destroy({
+        const deleteJob = await Job.destroy({
         where: {
             id: req.params.id,
         },
@@ -47,9 +47,33 @@ router.delete('/jobs/:id', withAuth, async (req, res) => {
     }
 
     res.status(200).json(deleteJob);
-
-} catch (err) {
+    } 
+    catch (err) {
     res.status(500).json(err);
-}
+    }
 });
   
+router.put('/jobs/:id', withAuth, async (req, res) => {
+    try {
+      const newJob = await Job.update(req.body, {
+        where: {
+          id: req.params.id,
+        },
+      });
+  
+      newJob.title = req.body.jobTitle;
+      newJob.description = req.body.jobDescription;
+  
+      if (!newJob) {
+        res.status(404).json({ 
+            message: 'No blog found with this id!'
+        });
+        return;
+      }
+  
+      res.status(200).json(newJob);
+    } 
+    catch (err) {
+      res.status(500).json(err);
+    }
+  });
