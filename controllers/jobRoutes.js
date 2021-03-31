@@ -4,17 +4,18 @@ const withAuth = require('../utils/auth');
 
 
 // Renders page to post a job
-router.get('/jobs/new', withAuth, async (req, res) => {
+router.get('/new', withAuth, async (req, res) => {
   try {
     res.render('postJob');
   }
   catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
 
 // Creating a new job record
-router.post('/jobs/new', withAuth, async (req, res) => {
+router.post('/new', withAuth, async (req, res) => {
     try {
       const newJob = await Job.create({
         title: req.body.jobTitle,
@@ -31,7 +32,7 @@ router.post('/jobs/new', withAuth, async (req, res) => {
   });
 
 // Deleting a job record
-router.delete('/jobs/:id', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
         const deleteJob = await Job.destroy({
         where: {
@@ -54,7 +55,7 @@ router.delete('/jobs/:id', withAuth, async (req, res) => {
 });
 
 // Updating a job record
-router.put('/jobs/:id', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
       const newJob = await Job.update(req.body, {
         where: {
