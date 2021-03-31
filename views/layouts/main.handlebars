@@ -8,12 +8,12 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="#">Tradewise</a>
+        <a class="navbar-brand" href="/">Tradewise</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Find a Job</a>
@@ -35,7 +35,7 @@
                 {{#if logged_in}}
                 <li><button class="btn" id="logout">Logout</button></li>
                 {{else}}
-                <li><button ahref="/login" class="btn" id="login">Sign Up</button></li>
+                <li><button ahref="/login" class="btn" id="signup">Sign Up</button></li>
                 <li><button ahref="/login" class="btn" id="login">Login</button></li>
                {{/if}}
             </ul>
