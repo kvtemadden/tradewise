@@ -8,29 +8,29 @@ router.get('/', (req, res) => {
 });
 
 // Main route for logged in users - loading jobs
-router.get('/home', withAuth, async (req, res) => {
-    try {
-        const jobData = await Job.findAll({
-            order: [['date_created', 'ASC']],
-            include: [
-                {
-                    model: User,
-                    attributes: ['id', 'name']
-                },
-            ]
-        });
+// router.get('/home', withAuth, async (req, res) => {
+//     try {
+//         const jobData = await Job.findAll({
+//             order: [['date_created', 'ASC']],
+//             include: [
+//                 {
+//                     model: User,
+//                     attributes: ['id', 'name']
+//                 },
+//             ]
+//         });
 
-        const jobs = jobData.map((job) => job.get({ plain: true }));
+//         const jobs = jobData.map((job) => job.get({ plain: true }));
 
-        res.render('homepage', {
-            jobs,
-            logged_in: req.session.logged_in,
-        });
-    }
-    catch (err) {
-        res.status(500).json(err);
-    }
-});
+//         res.render('homepage', {
+//             jobs,
+//             logged_in: req.session.logged_in,
+//         });
+//     }
+//     catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 
 // Login or signup route / redirect page for users not logged in

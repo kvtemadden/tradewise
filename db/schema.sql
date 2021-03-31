@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS tradeswise_db;
-CREATE DATABASE tradeswise_db;
+DROP DATABASE IF EXISTS tradewise_db;
+CREATE DATABASE tradewise_db;
