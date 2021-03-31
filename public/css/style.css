@@ -1,3 +1,32 @@
+#signin, #signup {
+  margin-left: 15px;
+  margin-top: 15px;
+
+}
+
+.row {
+  float: left;
+  height: 70vh;
+  margin: 0 auto;
+  align-items: center;
+  width: 80%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+#gen {
+  font-size: 10px;
+  padding-bottom: 10px;
+  display: block;
+  padding: 0px;
+  margin-bottom: 8px;
+  color: red;
+}
+
+#password {
+  padding-bottom: 0px;
+  margin-bottom: 1px;
+}
 
 .pmw {
     max-width:600px;
@@ -33,4 +62,3 @@
     line-height: 60px;
     background-color: #f5f5f5;
 }
-
