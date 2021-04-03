@@ -16,11 +16,12 @@
 
 #gen {
   font-size: 10px;
-  padding-bottom: 10px;
   display: block;
   padding: 0px;
   margin-bottom: 8px;
   color: red;
+  background-color: white;
+  border: none;
 }
 
 #password {
