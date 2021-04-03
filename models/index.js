@@ -43,4 +43,4 @@ Job.hasMany(Comment, {
   onDelete: "cascade"
 })
 
-module.exports = { User, Job, Comment };
+module.exports = { User, Job, Comment, Role };
