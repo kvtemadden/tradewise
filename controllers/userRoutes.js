@@ -1,7 +1,5 @@
-
 const router = require('express').Router();
 const { User } = require('../models');
-
 
 // Signing up a user for an account
 router.post('/signup', async (req, res) => {

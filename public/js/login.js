@@ -1,27 +1,60 @@
-const loginFormHandler = async (event) => {
-  event.preventDefault();
+// Handles on-click event for the login page
+const loginForm = async (e) => {
+  e.preventDefault();
 
-  const username = document.querySelector('#signin-username').value.trim();
+  // Retrieve values from the login form
+  const email = document.querySelector('#signin-email').value.trim();
   const password = document.querySelector('#signin-password').value.trim();
 
-  if (username && password) {
-    
+  if (email && password) {
+    // Send POST request to the 'user' endpoint
     const response = await fetch('/user/signin', {
       method: 'POST',
-      body: JSON.stringify(
-        { 
-          username, 
-          password 
-        }),
+      body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/');
+      // If successful, redirect user to dashboard page
+      document.location.replace('/dashboard');
     } else {
-      alert('Failed to log in');
+      alert(response.statusText);
     }
   }
 };
 
-document.querySelector('.signin-btn').addEventListener('submit', loginFormHandler);
+// Handles on-click event for the signup page
+const signupForm = async (e) => {
+  e.preventDefault();
+
+  const username = document.querySelector('#signup-username').value.trim();
+  const email = document.querySelector('#signup-email').value.trim();
+  const password = document.querySelector('#signup-password').value.trim();
+
+  if (username && email && password) {
+    // Send POST request to the 'user' endpoint
+    const response = await fetch('/user/signin', {
+      method: 'POST',
+      body: JSON.stringify({ username, email, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      // If successful, redirect user to dashboard page
+      document.location.replace('/dashboard');
+    } else {
+      alert(response.statusText);
+    }
+  }
+};
+
+// Listen out for a form submission on the signin.handlebars page
+// If form is submitted then execute the function(s) above
+document
+  .querySelector('.signin-form')
+  .addEventListener('submit', loginFormHandler);
+
+document
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);
+
