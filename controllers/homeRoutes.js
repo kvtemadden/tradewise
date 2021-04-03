@@ -4,7 +4,9 @@ const withAuth = require('../utils/auth');
 
 // Main landing page for all traffic
 router.get('/', (req, res) => {
-    res.render('homepage');
+    res.render('homepage', {
+        logged_in: req.session.logged_in,
+      });
 });
 
 // Main route for logged in users - loading jobs
@@ -34,13 +36,13 @@ router.get('/', (req, res) => {
 
 
 // Login or signup route / redirect page for users not logged in
-router.get('/login', (req, res) => {
+router.get('/signin', (req, res) => {
 
     if (req.session.logged_in) {
         res.redirect('/');
         return;
     }
-    res.render('login');
+    res.render('signin');
 });
 
 // Dashboard route which shows user's own job postings (if any) || must be logged in.
