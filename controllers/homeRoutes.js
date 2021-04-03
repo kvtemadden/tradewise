@@ -4,7 +4,9 @@ const withAuth = require('../utils/auth');
 
 // Main landing page for all traffic
 router.get('/', (req, res) => {
-    res.render('homepage');
+    res.render('homepage', {
+        logged_in: req.session.logged_in,
+      });
 });
 
 // Main route for logged in users - loading jobs
