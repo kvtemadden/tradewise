@@ -12,4 +12,4 @@ const signout = async () => {
   }
 };
 
-document.querySelector('#signout').addEventListener('submit', signout);
+document.querySelector('#signout').addEventListener('click', signout);
