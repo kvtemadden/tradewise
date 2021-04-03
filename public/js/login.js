@@ -33,7 +33,7 @@ const signupForm = async (e) => {
 
   if (username && email && password) {
     // Send POST request to the 'user' endpoint
-    const response = await fetch('/user/signin', {
+    const response = await fetch('/user/signup', {
       method: 'POST',
       body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' },
