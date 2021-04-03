@@ -1,9 +1,8 @@
-
 const router = require('express').Router();
 const { User } = require('../models');
 
-
 // Signing up a user for an account
+// Generate secure password and return it to user
 router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(req.body);
@@ -22,13 +21,12 @@ router.post('/signup', async (req, res) => {
 });
 
 // Allowing existing users to login if they have an account. 
-router.post('/login', async (req, res) => {
+router.post('/signin', async (req, res) => {
 
     try {
-
         const userData = await User.findOne({
             where: {
-                username: req.body.username
+                email: req.body.email
             }
         });
 
@@ -64,7 +62,7 @@ router.post('/login', async (req, res) => {
 });
 
 // When a user logs out, destroy session
-router.post('/logout', (req, res) => {
+router.post('/signout', (req, res) => {
     
     if (req.session.logged_in) {
         req.session.destroy(() => {
