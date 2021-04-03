@@ -34,13 +34,13 @@ router.get('/', (req, res) => {
 
 
 // Login or signup route / redirect page for users not logged in
-router.get('/login', (req, res) => {
+router.get('/signin', (req, res) => {
 
     if (req.session.logged_in) {
         res.redirect('/');
         return;
     }
-    res.render('login');
+    res.render('signin');
 });
 
 // Dashboard route which shows user's own job postings (if any) || must be logged in.
