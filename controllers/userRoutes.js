@@ -22,7 +22,7 @@ router.post('/signup', async (req, res) => {
 });
 
 // Allowing existing users to login if they have an account. 
-router.post('/login', async (req, res) => {
+router.post('/signin', async (req, res) => {
 
     try {
         const userData = await User.findOne({
