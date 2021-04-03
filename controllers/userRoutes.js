@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User } = require('../models');
 
 // Signing up a user for an account
+// Generate secure password and return it to user
 router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(req.body);
