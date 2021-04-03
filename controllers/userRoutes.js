@@ -63,7 +63,7 @@ router.post('/signin', async (req, res) => {
 });
 
 // When a user logs out, destroy session
-router.post('/logout', (req, res) => {
+router.post('/signout', (req, res) => {
     
     if (req.session.logged_in) {
         req.session.destroy(() => {
