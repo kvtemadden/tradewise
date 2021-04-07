@@ -23,10 +23,43 @@ const loginFormHandler = async (e) => {
   }
 };
 
+/* Fetch server endpoint and response. Populate password input
+   within signup form. */
+const generatePassword = async (e) => {
+  e.preventDefault();
+    // Send GET request to the 'user' endpoint
+    fetch('/user/signup/genpass', {
+      method: 'GET',
+    }).then(async response => {
+      if (response.ok) {
+        let password = await response.text();
+        document.querySelector('#signup-password').value = password;
+      } else {
+        alert(response.statusText);
+      }
+    })
+};
+
+// Hide passwords when user moves onto role drop-down box
+document
+  .querySelector('#signup-role')
+  .addEventListener('change', (e) => {
+    e.preventDefault();
+    let passwordInput = document.querySelector('#signup-password');
+    if (passwordInput.value != '') {
+      passwordInput.setAttribute('type', 'password');
+    }
+    if (passwordInput.value.length < 8) {
+      alert('Please choose a password that is at least 8 characters long');
+      passwordInput.value = '';
+    }
+    return;
+  })
+
 // Handles on-click event for the signup page
 const signupFormHandler = async (e) => {
   e.preventDefault();
-
+  checkPassword();
   const username = document.querySelector('#signup-username').value.trim();
   const email = document.querySelector('#signup-email').value.trim();
   const password = document.querySelector('#signup-password').value.trim();
@@ -50,13 +83,18 @@ const signupFormHandler = async (e) => {
   }
 };
 
-// Listen out for a form submission on the signin.handlebars page
-// If form is submitted then execute the function(s) above
+/* Listen out for a form submission on the signin.handlebars page.
+   If form is submitted then execute relevant function. */
 document
   .querySelector('.signin-form')
-  .addEventListener('submit', loginFormHandler);
+  .addEventListener('submit', loginForm);
 
 document
   .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+  .addEventListener('submit', signupForm);
 
+/* Listen out for button click for generating a secure password.
+   Execute function when clicked. */
+document
+  .querySelector('#gen')
+  .addEventListener('click', generatePassword);
