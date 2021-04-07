@@ -6,7 +6,9 @@ const withAuth = require('../utils/auth');
 // Renders page to post a job
 router.get('/new', withAuth, async (req, res) => {
   try {
-    res.render('postJob');
+    res.render('postJob', {
+      logged_in: req.session.logged_in,
+    });
   }
   catch (err) {
     console.log(err);
