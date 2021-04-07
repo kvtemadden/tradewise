@@ -23,6 +23,15 @@ const loginForm = async (e) => {
   }
 };
 
+// Check password length when user tries to submit form
+const checkPassword = () => {
+  let passwordInput = document.querySelector('#signup-password').value;
+  if (passwordInput.length < 8) {
+    alert('Please choose a password that is at least 8 characters long');
+  }
+  return;
+}
+
 /* Fetch server endpoint and response. Populate password input
    within signup form. */
 const generatePassword = async (e) => {
@@ -87,11 +96,11 @@ const signupForm = async (e) => {
    If form is submitted then execute relevant function. */
 document
   .querySelector('.signin-form')
-  .addEventListener('submit', loginForm);
+  .addEventListener('submit', loginFormHandler);
 
 document
   .querySelector('.signup-form')
-  .addEventListener('submit', signupForm);
+  .addEventListener('submit', signupFormHandler);
 
 /* Listen out for button click for generating a secure password.
    Execute function when clicked. */
