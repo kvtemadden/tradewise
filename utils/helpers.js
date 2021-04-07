@@ -4,14 +4,12 @@ module.exports = {
         new Date(date).getFullYear()
       }`;
     },
-    customer: (value) => {
-      if (value == 1) {
-        console.log("customer!");
-         return true
+    short: (text) => {
+      if (text.length > 150) {
+        str = text.substring(0, 147);
+        str = `${str}...`;
+         return str
       } 
-      else { 
-        return false; 
-      }    
     }
   };
   
