@@ -34,8 +34,8 @@ Job.init(
     role_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'role',
-        key: 'id',
+        model: 'user',
+        key: 'role_id',
       },
     },
   },

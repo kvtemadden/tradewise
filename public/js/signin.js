@@ -1,5 +1,5 @@
 // Handles on-click event for the login page
-const loginFormHandler = async (e) => {
+const loginForm = async (e) => {
   e.preventDefault();
 
   // Retrieve values from the login form
@@ -57,9 +57,9 @@ document
   })
 
 // Handles on-click event for the signup page
-const signupFormHandler = async (e) => {
+const signupForm = async (e) => {
   e.preventDefault();
-  checkPassword();
+  // checkPassword();
   const username = document.querySelector('#signup-username').value.trim();
   const email = document.querySelector('#signup-email').value.trim();
   const password = document.querySelector('#signup-password').value.trim();

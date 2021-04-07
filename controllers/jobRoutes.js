@@ -19,12 +19,20 @@ router.get('/new', withAuth, async (req, res) => {
 // Creating a new job record
 router.post('/new', withAuth, async (req, res) => {
   try {
+    const user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+
     const newJob = await Job.create({
       title: req.body.jobTitle,
       description: req.body.jobDescription,
       user_id: req.session.user_id,
-      role_id: req.body.role_id
+      role_id: user.role_id,
     });
+
+    console.log(req.session);
 
     res.status(200).json(newJob);
   }

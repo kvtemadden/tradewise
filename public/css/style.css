@@ -147,3 +147,20 @@ img {
 .title {
   font-size: 20px;
 }
+
+.editable:empty:before {
+  content: attr(data-placeholder);
+  color: #cccccc;
+}
+
+.editable:empty:focus::before {
+  content: "";
+}
+
+#newJobDescription {
+  min-height: 200px;
+}
+
+.editable {
+  padding: 10px;
+}
