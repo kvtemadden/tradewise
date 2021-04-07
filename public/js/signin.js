@@ -68,7 +68,7 @@ document
 // Handles on-click event for the signup page
 const signupForm = async (e) => {
   e.preventDefault();
-  // checkPassword();
+  checkPassword();
   const username = document.querySelector('#signup-username').value.trim();
   const email = document.querySelector('#signup-email').value.trim();
   const password = document.querySelector('#signup-password').value.trim();
@@ -96,11 +96,11 @@ const signupForm = async (e) => {
    If form is submitted then execute relevant function. */
 document
   .querySelector('.signin-form')
-  .addEventListener('submit', loginFormHandler);
+  .addEventListener('submit', loginForm);
 
 document
   .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+  .addEventListener('submit', signupForm);
 
 /* Listen out for button click for generating a secure password.
    Execute function when clicked. */
