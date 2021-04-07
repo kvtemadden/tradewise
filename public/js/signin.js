@@ -27,7 +27,6 @@ const loginForm = async (e) => {
    within signup form. */
 const generatePassword = async (e) => {
   e.preventDefault();
-
     // Send GET request to the 'user' endpoint
     fetch('/user/signup/genpass', {
       method: 'GET',
@@ -41,10 +40,26 @@ const generatePassword = async (e) => {
     })
 };
 
+// Hide passwords when user moves onto role drop-down box
+document
+  .querySelector('#signup-role')
+  .addEventListener('change', (e) => {
+    e.preventDefault();
+    let passwordInput = document.querySelector('#signup-password');
+    if (passwordInput.value != '') {
+      passwordInput.setAttribute('type', 'password');
+    }
+    if (passwordInput.value.length < 8) {
+      alert('Please choose a password that is at least 8 characters long');
+      passwordInput.value = '';
+    }
+    return;
+  })
+
 // Handles on-click event for the signup page
 const signupForm = async (e) => {
   e.preventDefault();
-
+  checkPassword();
   const username = document.querySelector('#signup-username').value.trim();
   const email = document.querySelector('#signup-email').value.trim();
   const password = document.querySelector('#signup-password').value.trim();
