@@ -1,8 +1,7 @@
-/* #signin, #signup {
+.form-title {
   margin-left: 15px;
   margin-top: 15px;
-
-} */
+}
 
 .my-row {
   float: left;
@@ -22,6 +21,15 @@
   color: red;
   background-color: white;
   border: none;
+}
+
+#gen:focus {
+  outline: none;
+  color: green;
+}
+
+#gen:hover {
+  color: green;
 }
 
 #password {

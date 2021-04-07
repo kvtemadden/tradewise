@@ -1,8 +1,31 @@
 const router = require('express').Router();
 const { User } = require('../models');
+const generator = require('generate-password');
+
+// Generate a password and send it in the server response
+router.get('/signup/genpass', async (_req, res) => {
+    const generatePassword = () => {
+        let generatedPassword = generator.generate({
+          length: 10,
+          numbers: true,
+          uppercase: true,
+          lowercase: true,
+        });
+        return generatedPassword;
+      };
+
+    try {
+        const password = await generatePassword();
+        res.send(password);
+    }
+
+    catch (err) {
+        console.log(err);
+        res.status(400).json(err);
+    }
+});
 
 // Signing up a user for an account
-// Generate secure password and return it to user
 router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(req.body);
