@@ -39,7 +39,6 @@ router.post('/signup', async (req, res) => {
     }
 
     catch (err) {
-        console.log(err);
         res.status(400).json(err);
     }
 });
@@ -50,7 +49,7 @@ router.post('/signin', async (req, res) => {
     try {
         const userData = await User.findOne({
             where: {
-                username: req.body.username
+                email: req.body.email
             }
         });
 
