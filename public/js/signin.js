@@ -24,6 +24,7 @@ const loginForm = async (e) => {
 };
 
 // Check password length when user tries to submit form
+// REMOVE ALERTS
 const checkPassword = () => {
   let passwordInput = document.querySelector('#signup-password').value;
   if (passwordInput.length < 8) {
@@ -44,6 +45,7 @@ const generatePassword = async (e) => {
         let password = await response.text();
         document.querySelector('#signup-password').value = password;
       } else {
+        // REMOVE ALERT
         alert(response.statusText);
       }
     })
@@ -58,6 +60,7 @@ document
     if (passwordInput.value != '') {
       passwordInput.setAttribute('type', 'password');
     }
+    // REMOVE ALERT
     if (passwordInput.value.length < 8) {
       alert('Please choose a password that is at least 8 characters long');
       passwordInput.value = '';
@@ -88,6 +91,7 @@ const signupForm = async (e) => {
       document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
+      // REMOVE ALERT
     }
   }
 };

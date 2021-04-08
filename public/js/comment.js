@@ -15,6 +15,7 @@ const postComment = async (event) => {
     })
 
     //adds to db.json
+    // REMOVE ALERT!
     if (response.ok) {
       alert('Reply posted!');
       location.reload();
