@@ -1,15 +1,14 @@
 {{!-- Actual job page (when you click on a job, you see the job info/comments) --}}
-<section class="container-fluid">
-        <div class="row border justify-content-center p-3 m-3">
-            <h3 class="border p-3 m-3">Job Title<h3>
+<section>
+        <div class="centre-pane">
+                <div class="row">         
+                        <h3 class="col-12 px-3 jobPostTitle">{{job.title}}</h3>
+                        <h6 class="col-12 px-3 jobPostInfo">Posted by: {{job.user.username}}</h6>
+
+                        <p class="col-12 mt-3 p-3 jobPostDesc">{{job.description}}</p>
+                </div>
+        {{> comments job.comments}}
         </div>
-        <div class="d-flex flex-row">
-            
-                <h3 class="border col-4 m-3 p-3">User Name</h3>
-            
-                <h3 class="border col-7 m-3 p-3">Job Descrip</h3>
-        </div>
-        <div class="row justify-content-center p-3 m-3" contenteditable="true">
-            <p class="border p-3 m-3">Leave Reply</p>
-        </div>
-    </section>
+</section>
+
+<script src="/js/comment.js"></script>
