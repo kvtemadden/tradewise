@@ -1,1 +1,14 @@
 {{!-- Actual job page (when you click on a job, you see the job info/comments) --}}
+<section>
+        <div class="centre-pane">
+                <div class="row">         
+                        <h3 class="col-12 px-3 jobPostTitle">{{job.title}}</h3>
+                        <h6 class="col-12 px-3 jobPostInfo">Posted by: {{job.user.username}}</h6>
+
+                        <p class="col-12 mt-3 p-3 jobPostDesc">{{job.description}}</p>
+                </div>
+        {{> comments job.comments}}
+        </div>
+</section>
+
+<script src="/js/comment.js"></script>

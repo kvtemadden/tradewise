@@ -19,12 +19,20 @@ router.get('/new', withAuth, async (req, res) => {
 // Creating a new job record
 router.post('/new', withAuth, async (req, res) => {
   try {
+    const user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+
     const newJob = await Job.create({
       title: req.body.jobTitle,
       description: req.body.jobDescription,
       user_id: req.session.user_id,
-      role_id: req.body.role_id
+      role_id: user.role_id,
     });
+
+    console.log(req.session);
 
     res.status(200).json(newJob);
   }
@@ -98,12 +106,12 @@ router.get('/:id', withAuth, async (req, res) => {
           attributes: ['id', 'content', 'job_id', 'user_id', 'date_created'],
           include: {
             model: User,
-            attributes: ['name']
+            attributes: ['username']
           }
         },
         {
           model: User,
-          attributes: ['name']
+          attributes: ['username']
         }],
     });
 
@@ -117,12 +125,12 @@ router.get('/:id', withAuth, async (req, res) => {
 
     const job = jobData.get({ plain: true });
 
-    res.render('job', {
+    res.render('singleJob', {
       job,
       logged_in: req.session.logged_in,
     });
 
-    res.status(200).json(jobData);
+    res.status(200);
   }
   catch (err) {
     res.status(500).json(err);
@@ -136,7 +144,7 @@ router.post('/:id', withAuth, async (req, res) => {
     const newComment = await Comment.create({
       content: req.body.content,
       user_id: req.session.user_id,
-      job_id: req.body.id,
+      job_id: req.body.job_id,
     });
 
     res.status(200).json(newComment);

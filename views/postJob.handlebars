@@ -6,16 +6,18 @@
   <div class="container pmw ">
     <div class=mt-5>
       <h2>Title</h2>
-      <p class="border rounded p5" contenteditable="true">Enter a title for your job</p>
+      <p class="editable border rounded p5" contenteditable="true" id="newJobTitle" data-placeholder="Enter a job title"></p>
     </div>
     <div mt-3>
       <h3>Description</h3>
-      <p class="border rounded p5" contenteditable="true">Enter a description of your job</p>
+      <p class="editable border rounded p5" contenteditable="true" id="newJobDescription" data-placeholder="What job do you need doing?... Write a description here."></p>
     </div>
     <div class="row mt-5">
-      <button class="button button5 align-center btn btn-info btncol">Submit</button>
+      <button class="button button5 align-center btn btn-info btncol" id="postJob">Submit</button>
     </div>
 
   </div>
 
 </section>
+
+<script src="/js/postjob.js"></script>
