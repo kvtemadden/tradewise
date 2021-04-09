@@ -164,7 +164,7 @@ img {
   background-color: rgba(136, 201, 242, 0.4);
   border-radius: 12px;
   padding: 10px;
-
+}
   
  .editable:empty:before {
   content: attr(data-placeholder);
