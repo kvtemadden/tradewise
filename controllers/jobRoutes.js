@@ -85,6 +85,7 @@ router.put('/edit/:id', withAuth, async (req, res) => {
 
     thisJob.title = req.body.title;
     thisJob.description = req.body.description;
+    thisJob.role_id = req.body.role_id;
 
     if (!thisJob) {
       res.status(404).json({

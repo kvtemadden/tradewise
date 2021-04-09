@@ -7,6 +7,7 @@ const updateJob = async (event) => {
     id = id.split('edit/')[1];
   }
 
+  var role_id = document.querySelector('#job-type').value;
   var title = document.querySelector('.jobPostTitle').innerHTML;
   var description = document.querySelector('.jobPostDesc').innerHTML;
 
@@ -16,6 +17,7 @@ const updateJob = async (event) => {
         id: id,
         title: title,
         description: description,
+        role_id: role_id,
       }),
       headers: { 'Content-Type': 'application/json' },
     })
@@ -29,7 +31,6 @@ const updateJob = async (event) => {
     }
 };
 
-debugger;
 var jobCategory = document.getElementsByClassName('label')[0].id;
 
 document.querySelector('#job-type').value = jobCategory;
