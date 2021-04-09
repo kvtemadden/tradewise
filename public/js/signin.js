@@ -27,7 +27,7 @@ const loginForm = async (e) => {
 const checkPassword = () => {
   let passwordInput = document.querySelector('#signup-password').value;
   if (passwordInput.length < 8) {
-    alert('Please choose a password that is at least 8 characters long');
+    toastr.info('Please choose a password that is at least 8 characters long');
   }
   return;
 }
@@ -59,7 +59,7 @@ document
       passwordInput.setAttribute('type', 'password');
     }
     if (passwordInput.value.length < 8) {
-      alert('Please choose a password that is at least 8 characters long');
+      toastr.info('Please choose a password that is at least 8 characters long');
       passwordInput.value = '';
     }
     return;
