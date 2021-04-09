@@ -78,4 +78,53 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
+//Filtering by specific types of jobs
+router.get('/dashboard/:id', withAuth, async (req, res) => {
+  try {
+      const user = await User.findOne({
+          where: {
+            id: req.session.user_id,
+          },
+        });
+
+      const userValues = user.dataValues;
+      const checkCustomer = user.is_customer == 1 ? true : false;
+
+      const userJobs = await Job.findAll({
+           include: [
+          {
+            model: User,
+            attributes: ['username', 'is_customer', 'picture']
+          }],
+          where: { user_id: req.session.user_id },
+          order: [['date_created', 'ASC']],
+      });
+
+      const allJobs = await Job.findAll({    
+          include: [
+          {
+            model: User,
+            attributes: ['username', 'is_customer', 'picture']
+          }],
+          where: { role_id: req.params.id, },
+          order: [['date_created', 'ASC']],
+      });
+
+      const myJobs = userJobs.map((job) => job.get({ plain: true }));
+      const otherJobs = allJobs.map((job) => job.get({ plain: true }));
+
+      res.render('dashboard', {
+          myJobs,
+          otherJobs,
+          userValues,
+          checkCustomer,
+          logged_in: req.session.logged_in,
+      });
+
+  }
+  catch (err) {
+      res.status(500).json(err);
+  }
+});
+
 module.exports = router;

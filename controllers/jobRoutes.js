@@ -39,7 +39,7 @@ router.post('/new', withAuth, async (req, res) => {
       title: req.body.jobTitle,
       description: req.body.jobDescription,
       user_id: req.session.user_id,
-      role_id: user.role_id,
+      role_id: req.body.role_id,
     });
 
     res.status(200).json(newJob);
