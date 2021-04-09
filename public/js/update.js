@@ -1,6 +1,6 @@
 const updateJob = async (event) => {
   event.preventDefault();
-  debugger;
+
   var id = window.location.href.toString().split('jobs/')[1];
  
   if (id.includes("edit/")) {
@@ -29,5 +29,9 @@ const updateJob = async (event) => {
     }
 };
 
+debugger;
+var jobCategory = document.getElementsByClassName('label')[0].id;
+
+document.querySelector('#job-type').value = jobCategory;
 
 document.querySelector('#updateJob').addEventListener('click', updateJob);

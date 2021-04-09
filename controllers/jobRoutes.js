@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Job, Comment, User } = require('../models');
+const { Job, Comment, User, Role } = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -188,6 +188,10 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         {
           model: User,
           attributes: ['username', 'picture']
+        },
+        {
+          model: Role,
+          attributes: ['category']
         }],
     });
 
