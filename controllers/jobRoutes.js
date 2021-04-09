@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Job, Comment, User } = require('../models');
+const { Job, Comment, User, Role } = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -35,11 +35,13 @@ router.post('/new', withAuth, async (req, res) => {
       },
     });
 
+    console.log(req.body.role_id);
+
     const newJob = await Job.create({
       title: req.body.jobTitle,
       description: req.body.jobDescription,
       user_id: req.session.user_id,
-      role_id: user.role_id,
+      role_id: req.body.role_id,
     });
 
     res.status(200).json(newJob);
@@ -83,6 +85,7 @@ router.put('/edit/:id', withAuth, async (req, res) => {
 
     thisJob.title = req.body.title;
     thisJob.description = req.body.description;
+    thisJob.role_id = req.body.role_id;
 
     if (!thisJob) {
       res.status(404).json({
@@ -186,6 +189,10 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         {
           model: User,
           attributes: ['username', 'picture']
+        },
+        {
+          model: Role,
+          attributes: ['category']
         }],
     });
 

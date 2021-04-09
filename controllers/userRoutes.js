@@ -41,6 +41,11 @@ router.get('/:id', withAuth, async (req, res) => {
     
           }
 
+        if (req.body.role_id == "" | req.body.role_id == userCurrent.role_id) {
+          req.body.role_id = userCurrent.role_id;
+  
+        }
+
           
         if (req.body.picture == '' | req.body.picture == userCurrent.picture) {
             req.body.picture = userCurrent.picture;
