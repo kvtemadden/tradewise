@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Job, User } = require('../models');
+const { Job, User, Role } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Main landing page for all traffic
@@ -47,6 +47,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
             {
               model: User,
               attributes: ['username', 'is_customer', 'picture']
+            },
+            {
+              model: Role,
+              attributes: ['category']
             }],
             where: { user_id: req.session.user_id },
             order: [['date_created', 'ASC']],
@@ -57,8 +61,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
             {
               model: User,
               attributes: ['username', 'is_customer', 'picture']
+            },
+            {
+              model: Role,
+              attributes: ['category']
             }],
-            order: [['role_id', 'ASC'], ['date_created', 'ASC']],
+            order: [['date_created', 'ASC']],
         });
 
         const myJobs = userJobs.map((job) => job.get({ plain: true }));
@@ -95,6 +103,10 @@ router.get('/dashboard/:id', withAuth, async (req, res) => {
           {
             model: User,
             attributes: ['username', 'is_customer', 'picture']
+          },
+          {
+            model: Role,
+            attributes: ['category']
           }],
           where: { user_id: req.session.user_id },
           order: [['date_created', 'ASC']],
@@ -105,6 +117,10 @@ router.get('/dashboard/:id', withAuth, async (req, res) => {
           {
             model: User,
             attributes: ['username', 'is_customer', 'picture']
+          },
+          {
+            model: Role,
+            attributes: ['category']
           }],
           where: { role_id: req.params.id, },
           order: [['date_created', 'ASC']],

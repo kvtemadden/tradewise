@@ -1,6 +1,6 @@
 const createJob = async (event) => {
   event.preventDefault();
-
+  debugger;
   var role_id = document.querySelector('#job-type').value; 
   var title = document.querySelector('#newJobTitle').innerHTML;
   var description = document.querySelector('#newJobDescription').innerHTML;

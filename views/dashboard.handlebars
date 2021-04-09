@@ -10,6 +10,7 @@
             <p>My Jobs</p>
             {{#each myJobs as |myjob| }}
             <div class="col-md-12 job-post">
+                <span class="badge badge-primary">{{myjob.role.category}}</span>
                 <img class="sm-pp" src="{{myjob.user.picture}}">
                 <h2 class="padding job-header"><a href="/jobs/{{myjob.id}}">{{myjob.title}}</a></h2>
                 <p class="padding job-description">{{short myjob.description}}</p>
@@ -22,6 +23,7 @@
             <h3 class="mb-5">My Jobs</h3>
             {{#each myJobs as |myjob| }}
             <div class="col-12 mb-5 job-post">
+                <span class="badge badge-primary">{{myjob.role.category}}</span>
                 <img class="sm-pp" src="{{myjob.user.picture}}">
                 <h2 class="padding job-header"><a href="/jobs/{{myjob.id}}">{{myjob.title}}</a></h2>
                 <p class="padding job-description">{{short myjob.description}}</p>
@@ -49,6 +51,7 @@
             </div>
             {{#each otherJobs as |ojob| }}
             <div class="col-12 mb-5 job-post">
+                <span class="badge badge-primary">{{ojob.role.category}}</span>
                 <img class="sm-pp" src="{{ojob.user.picture}}">
                 <h2 class="padding job-header"><a href="/jobs/{{ojob.id}}">{{ojob.title}}</a></h2>
                 <p class="padding job-description">{{short ojob.description}}</p>

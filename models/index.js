@@ -8,6 +8,11 @@ Role.hasOne(User, {
   onDelete: 'CASCADE'
 });
 
+Role.hasOne(User, {
+  foreignKey: 'role_id',
+  onDelete: 'CASCADE'
+});
+
 User.belongsTo(Role, {
     foreignKey: 'role_id',
     onDelete: 'CASCADE'
@@ -18,8 +23,18 @@ User.hasMany(Job, {
   onDelete: 'CASCADE'
 });
 
+Role.hasMany(Job, {
+  foreignKey: 'role_id',
+  onDelete: 'CASCADE'
+});
+
 Job.belongsTo(User, {
   foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+Job.belongsTo(Role, {
+  foreignKey: 'role_id',
   onDelete: 'CASCADE'
 });
 

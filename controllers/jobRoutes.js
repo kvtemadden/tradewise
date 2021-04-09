@@ -35,6 +35,8 @@ router.post('/new', withAuth, async (req, res) => {
       },
     });
 
+    console.log(req.body.role_id);
+
     const newJob = await Job.create({
       title: req.body.jobTitle,
       description: req.body.jobDescription,
