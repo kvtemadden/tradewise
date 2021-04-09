@@ -46,7 +46,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
              include: [
             {
               model: User,
-              attributes: ['username', 'is_customer']
+              attributes: ['username', 'is_customer', 'picture']
             }],
             where: { user_id: req.session.user_id },
             order: [['date_created', 'ASC']],
@@ -56,7 +56,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
             include: [
             {
               model: User,
-              attributes: ['username', 'is_customer']
+              attributes: ['username', 'is_customer', 'picture']
             }],
             order: [['role_id', 'ASC'], ['date_created', 'ASC']],
         });

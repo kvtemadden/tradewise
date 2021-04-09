@@ -123,12 +123,12 @@ router.get('/:id', withAuth, async (req, res) => {
           attributes: ['id', 'content', 'job_id', 'user_id', 'date_created'],
           include: {
             model: User,
-            attributes: ['username']
+            attributes: ['username', 'picture']
           }
         },
         {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'picture']
         }],
     });
 
@@ -180,12 +180,12 @@ router.get('/edit/:id', withAuth, async (req, res) => {
           attributes: ['id', 'content', 'job_id', 'user_id', 'date_created'],
           include: {
             model: User,
-            attributes: ['username']
+            attributes: ['username', 'picture']
           }
         },
         {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'picture']
         }],
     });
 
