@@ -2,6 +2,10 @@
   font-family: 'Circular-Loom';
 }
 
+body {
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
 .form-title {
   margin-left: 15px;
   margin-top: 15px;
@@ -15,6 +19,10 @@
   width: 80%;
   margin-top: 5%;
   margin-bottom: 5%;
+}
+
+.my-form {
+  background-color: white;;
 }
 
 #gen {
