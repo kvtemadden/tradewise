@@ -1,19 +1,15 @@
 <section>
-        <div class="row flex m-3 p-3">
-            <div class="align-items-start col-sm-12 col-md-3 m-3 p-3 ">
-                <img class= "justify-content-center" src="https://placeimg.com/128/128/people">
+            <div class="mx-auto col-sm-11 col-md-8 spacer">
+                <img class="pp" src="{{userValues.picture}}">
+                <h2 class="ml-4 headline">Welcome back, {{userValues.username}} </h2>
             </div>
-            <div class="align-items-center d-flex col-sm-12 col-md-8">
-                <h2>My Profile </h2>
-            </div>
-        </div>
 
-        <div class="row mx-3 px-3">
+        <div class="row">
                 {{#if checkCustomer }}
-                <div class="border col-sm-12 col-md-3 m-3 p-3">
+                <div class="border mx-auto col-sm-11 col-md-8 m-3 p-3">
                 <p>My Jobs</p>
                     {{#each myJobs as |myjob| }} 
-                    <div class="col-md-6 job-post">
+                    <div class="col-md-12 job-post">
                         <h2 class="padding job-header"><a href="/jobs/{{myjob.id}}">{{myjob.title}}</a></h2>
                         <p class="padding job-description">{{short myjob.description}}</p>  
                         <p class="padding job-info">{{format_date myjob.date_created}}</p>

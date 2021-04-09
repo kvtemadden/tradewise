@@ -6,8 +6,19 @@ const withAuth = require('../utils/auth');
 // Renders page to post a job
 router.get('/new', withAuth, async (req, res) => {
   try {
+    const user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+
+    const userValues = user.dataValues;
+    const checkCustomer = user.is_customer == 1 ? true : false;
+
     res.render('postJob', {
+      checkCustomer,
       logged_in: req.session.logged_in,
+      userValues,
     });
   }
   catch (err) {
@@ -30,8 +41,6 @@ router.post('/new', withAuth, async (req, res) => {
       user_id: req.session.user_id,
       role_id: user.role_id,
     });
-
-    console.log(req.session);
 
     res.status(200).json(newJob);
   }
@@ -95,6 +104,15 @@ router.put('/edit/:id', withAuth, async (req, res) => {
 // Gets single job page and comments
 router.get('/:id', withAuth, async (req, res) => {
   try {
+    const user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+
+    const userValues = user.dataValues;
+    const checkCustomer = user.is_customer == 1 ? true : false;
+
     const jobData = await Job.findOne({
       where: {
         id: req.params.id
@@ -129,6 +147,8 @@ router.get('/:id', withAuth, async (req, res) => {
       job,
       logged_in: req.session.logged_in,
       isUserJob,
+      userValues,
+      checkCustomer,
     });
 
     res.status(200);
@@ -138,8 +158,18 @@ router.get('/:id', withAuth, async (req, res) => {
   }
 });
 
+// Gets the edit job page
 router.get('/edit/:id', withAuth, async (req, res) => {
   try {
+    const user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+
+    const userValues = user.dataValues;
+    const checkCustomer = user.is_customer == 1 ? true : false;
+
     const jobData = await Job.findOne({
       where: {
         id: req.params.id
@@ -171,7 +201,9 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 
     res.render('editJob', {
       job,
+      userValues,
       logged_in: req.session.logged_in,
+      checkCustomer,
     });
 
     res.status(200);
@@ -197,5 +229,6 @@ router.post('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;
