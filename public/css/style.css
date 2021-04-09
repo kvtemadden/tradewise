@@ -2,10 +2,24 @@
   font-family: 'Circular-Loom';
 }
 
+body {
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+.carousel .carousel-item>img {
+  height: auto;
+  width: auto;
+}
 .col-center {
 	margin: 0 auto;
 	float: none !important;
 }
+
+.carousel .testimonial {
+	padding: 0 15px 0 60px ;
+	position: relative;
+}
+
 .carousel {	
 	margin: 30px auto 50px;
 	padding: 0 68px;
@@ -70,6 +84,10 @@
   width: 80%;
   margin-top: 5%;
   margin-bottom: 5%;
+}
+
+.my-form {
+  background-color: white;;
 }
 
 #gen {
@@ -312,6 +330,7 @@
 .pp {
   max-width: 20%;
   max-height: 128px;
+  border-radius: 50%;
 }
 
 .nav-profile .pp {
@@ -345,4 +364,20 @@ padding-top: 5px;
   max-height: 50px;
   float: left;
   margin-right: 10px;
+  border-radius: 50%;
+}
+
+.flt-r {
+  float: right;
+}
+
+.sm-badge {
+  font-size: 12px;
+  padding: .5rem;
+  height: 20px;
+  line-height: .4;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1rem;
 }
