@@ -3,10 +3,6 @@ const Job = require('./Job');
 const Comment = require('./Comment');
 const Role = require('./Role');
 
-Role.hasOne(User, {
-  foreignKey: 'role_id',
-  onDelete: 'CASCADE'
-});
 
 Role.hasOne(User, {
   foreignKey: 'role_id',

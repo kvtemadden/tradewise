@@ -37,9 +37,15 @@ router.get('/dashboard', withAuth, async (req, res) => {
             where: {
               id: req.session.user_id,
             },
+            include: [
+              {
+                model: Role,
+                attributes: ['category']
+              }],
           });
 
         const userValues = user.dataValues;
+        const userRole = user.dataValues.role.dataValues.category;
         const checkCustomer = user.is_customer == 1 ? true : false;
 
         const userJobs = await Job.findAll({
@@ -76,6 +82,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
             myJobs,
             otherJobs,
             userValues,
+            userRole,
             checkCustomer,
             logged_in: req.session.logged_in,
         });
