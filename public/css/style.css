@@ -2,6 +2,16 @@
   font-family: 'Circular-Loom';
 }
 
+.carousel .carousel-item>img {
+  height: auto;
+  width: auto;
+}
+
+.carousel .testimonial {
+	padding: 0 15px 0 60px ;
+	position: relative;
+}
+
 .form-title {
   margin-left: 15px;
   margin-top: 15px;
