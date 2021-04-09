@@ -3,12 +3,12 @@ const signout = async () => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
-// REMOVE ALERT
+
   if (response.ok) {
     document.location.replace('/signin');
   } 
   else {
-    alert('Failed to log out');
+    toastr.info('Failed to log out');
   }
 };
 

@@ -15,13 +15,12 @@ const createJob = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     })
 
-    // REMOVE ALERTS
     if (response.ok) {
-      alert('Post created!');
+      toastr.info('Post created!');
       document.location.replace('/dashboard');
     
     } else {
-      alert('Failed to create post');
+      toastr.info('Failed to create post');
     }
 };
 

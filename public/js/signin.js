@@ -18,13 +18,12 @@ const loginForm = async (e) => {
       // If successful, redirect user to dashboard page
       document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+      toastr.info(response.statusText);
     }
   }
 };
 
 // Check password length when user tries to submit form
-// REMOVE ALERTS
 const checkPassword = () => {
   let passwordInput = document.querySelector('#signup-password').value;
   if (passwordInput.length < 8) {
@@ -45,8 +44,8 @@ const generatePassword = async (e) => {
         let password = await response.text();
         document.querySelector('#signup-password').value = password;
       } else {
-        // REMOVE ALERT
-        alert(response.statusText);
+      
+        toastr.info(response.statusText);
       }
     })
 };
@@ -60,7 +59,7 @@ document
     if (passwordInput.value != '') {
       passwordInput.setAttribute('type', 'password');
     }
-    // REMOVE ALERT
+    
     if (passwordInput.value.length < 8) {
       toastr.info('Please choose a password that is at least 8 characters long');
       passwordInput.value = '';
@@ -90,8 +89,8 @@ const signupForm = async (e) => {
       // If successful, redirect user to dashboard page
       document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
-      // REMOVE ALERT
+      toastr.info(response.statusText);
+      
     }
   }
 };
