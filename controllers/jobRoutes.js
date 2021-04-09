@@ -2,8 +2,6 @@ const router = require('express').Router();
 const { Job, Comment, User, Role } = require('../models');
 const withAuth = require('../utils/auth');
 
-
-// Renders page to post a job
 router.get('/new', withAuth, async (req, res) => {
   try {
     const user = await User.findOne({
@@ -26,7 +24,6 @@ router.get('/new', withAuth, async (req, res) => {
   }
 });
 
-// Creating a new job record
 router.post('/new', withAuth, async (req, res) => {
   try {
     const user = await User.findOne({
@@ -34,8 +31,6 @@ router.post('/new', withAuth, async (req, res) => {
         id: req.session.user_id,
       },
     });
-
-    console.log(req.body.role_id);
 
     const newJob = await Job.create({
       title: req.body.jobTitle,
@@ -51,7 +46,6 @@ router.post('/new', withAuth, async (req, res) => {
   }
 });
 
-// Deleting a job record
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const deleteJob = await Job.destroy({
@@ -74,7 +68,6 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-// Updating a job record
 router.put('/edit/:id', withAuth, async (req, res) => {
   try {
     const thisJob = await Job.update(req.body, {
@@ -101,10 +94,6 @@ router.put('/edit/:id', withAuth, async (req, res) => {
   }
 });
 
-
-// ------------ Routes for Single Job Page -------------
-
-// Gets single job page and comments
 router.get('/:id', withAuth, async (req, res) => {
   try {
     const user = await User.findOne({
@@ -161,7 +150,6 @@ router.get('/:id', withAuth, async (req, res) => {
   }
 });
 
-// Gets the edit job page
 router.get('/edit/:id', withAuth, async (req, res) => {
   try {
     const user = await User.findOne({
@@ -220,8 +208,6 @@ router.get('/edit/:id', withAuth, async (req, res) => {
   }
 });
 
-
-// New comments
 router.post('/:id', withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
@@ -236,6 +222,5 @@ router.post('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;

@@ -2,25 +2,23 @@ const router = require('express').Router();
 const { Job, User, Role } = require('../models');
 const withAuth = require('../utils/auth');
 
-// Main landing page for all traffic
-router.get('/', async (req, res) => {
-      const user = await User.findOne({
+router.get('/', (req, res) => {
+    const user = User.findOne({
         where: {
-          id: req.session.user_id,
+            id: req.session.user_id,
         },
-      });
+    });
 
-      const checkCustomer = user.is_customer == 1 ? true : false;
-      const userValues = user.dataValues;
+    const checkCustomer = user.is_customer == 1 ? true : false;
+    const userValues = user.dataValues;
 
     res.render('homepage', {
         logged_in: req.session.logged_in,
         checkCustomer,
         userValues,
-      });
+        });
 });
 
-// Login or signup route / redirect page for users not logged in
 router.get('/signin', (req, res) => {
 
     if (req.session.logged_in) {
@@ -30,7 +28,6 @@ router.get('/signin', (req, res) => {
     res.render('signin');
 });
 
-// Dashboard route which shows user's own job postings (if any) || must be logged in.
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const user = await User.findOne({
@@ -93,7 +90,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
-//Filtering by specific types of jobs
 router.get('/dashboard/:id', withAuth, async (req, res) => {
   try {
       const user = await User.findOne({

@@ -4,7 +4,6 @@ const postComment = async (event) => {
   var comment = document.querySelector('#comment').innerHTML;
   var id = window.location.href.toString().split('jobs/')[1];
 
-
     const response = await fetch("/jobs/" + id, {
       method: 'POST',
       body: JSON.stringify({
@@ -14,7 +13,6 @@ const postComment = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     })
 
-    //adds to db.json
     if (response.ok) {
       alert('Reply posted!');
       location.reload();
