@@ -3,9 +3,20 @@ const { Job, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Main landing page for all traffic
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+      const user = await User.findOne({
+        where: {
+          id: req.session.user_id,
+        },
+      });
+
+      const checkCustomer = user.is_customer == 1 ? true : false;
+      const userValues = user.dataValues;
+
     res.render('homepage', {
         logged_in: req.session.logged_in,
+        checkCustomer,
+        userValues,
       });
 });
 
@@ -28,13 +39,14 @@ router.get('/dashboard', withAuth, async (req, res) => {
             },
           });
 
+        const userValues = user.dataValues;
         const checkCustomer = user.is_customer == 1 ? true : false;
 
         const userJobs = await Job.findAll({
              include: [
             {
               model: User,
-              attributes: ['username', 'is_customer']
+              attributes: ['username', 'is_customer', 'picture']
             }],
             where: { user_id: req.session.user_id },
             order: [['date_created', 'ASC']],
@@ -44,7 +56,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
             include: [
             {
               model: User,
-              attributes: ['username', 'is_customer']
+              attributes: ['username', 'is_customer', 'picture']
             }],
             order: [['role_id', 'ASC'], ['date_created', 'ASC']],
         });
@@ -55,6 +67,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.render('dashboard', {
             myJobs,
             otherJobs,
+            userValues,
             checkCustomer,
             logged_in: req.session.logged_in,
         });

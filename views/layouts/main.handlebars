@@ -25,7 +25,11 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    {{#if checkCustomer}}
+                    <a class="nav-link" href="/dashboard">My jobs</a>
+                    {{else}}
                     <a class="nav-link" href="/dashboard">Find a Job</a>
+                    {{/if}}
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/jobs/new">Post a Job</a>
@@ -33,6 +37,10 @@
             </ul>
             <ul class="nav navbar-nav ml-auto justify-content-end">
                 {{#if logged_in}}
+                <div class="nav-profile">
+                <a href="/user/{{userValues.id}}" class="profile-hover"><img class="pp" src="{{userValues.picture}}">
+                <p class="ml-1 mr-3 headline">{{userValues.username}}</p></a>
+                </div>
                 <li><button ahref="/signout" class="btn" id="signout">Logout</button></li>
                 {{else}}
                 <li><button ahref="/signin" class="btn" id="signin">Login/Sign Up</button></li>

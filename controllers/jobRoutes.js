@@ -6,12 +6,22 @@ const withAuth = require('../utils/auth');
 // Renders page to post a job
 router.get('/new', withAuth, async (req, res) => {
   try {
+    const user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+
+    const userValues = user.dataValues;
+    const checkCustomer = user.is_customer == 1 ? true : false;
+
     res.render('postJob', {
+      checkCustomer,
       logged_in: req.session.logged_in,
+      userValues,
     });
   }
   catch (err) {
-    console.log(err);
     res.status(400).json(err);
   }
 });
@@ -31,8 +41,6 @@ router.post('/new', withAuth, async (req, res) => {
       user_id: req.session.user_id,
       role_id: user.role_id,
     });
-
-    console.log(req.session);
 
     res.status(200).json(newJob);
   }
@@ -65,25 +73,25 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 // Updating a job record
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/edit/:id', withAuth, async (req, res) => {
   try {
-    const newJob = await Job.update(req.body, {
+    const thisJob = await Job.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
 
-    newJob.title = req.body.jobTitle;
-    newJob.description = req.body.jobDescription;
+    thisJob.title = req.body.title;
+    thisJob.description = req.body.description;
 
-    if (!newJob) {
+    if (!thisJob) {
       res.status(404).json({
         message: 'No job found with this id!'
       });
       return;
     }
 
-    res.status(200).json(newJob);
+    res.status(200).json(thisJob);
   }
   catch (err) {
     res.status(500).json(err);
@@ -96,6 +104,15 @@ router.put('/:id', withAuth, async (req, res) => {
 // Gets single job page and comments
 router.get('/:id', withAuth, async (req, res) => {
   try {
+    const user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+
+    const userValues = user.dataValues;
+    const checkCustomer = user.is_customer == 1 ? true : false;
+
     const jobData = await Job.findOne({
       where: {
         id: req.params.id
@@ -106,12 +123,69 @@ router.get('/:id', withAuth, async (req, res) => {
           attributes: ['id', 'content', 'job_id', 'user_id', 'date_created'],
           include: {
             model: User,
-            attributes: ['username']
+            attributes: ['username', 'picture']
           }
         },
         {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'picture']
+        }],
+    });
+
+    if (!jobData) {
+      res.status(404).json(
+        {
+          message: 'No job found with this id!'
+        });
+      return;
+    }
+
+    const job = jobData.get({ plain: true });
+    const isUserJob = req.session.user_id == job.user_id ? true : false;
+
+    res.render('singleJob', {
+      job,
+      logged_in: req.session.logged_in,
+      isUserJob,
+      userValues,
+      checkCustomer,
+    });
+
+    res.status(200);
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Gets the edit job page
+router.get('/edit/:id', withAuth, async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    });
+
+    const userValues = user.dataValues;
+    const checkCustomer = user.is_customer == 1 ? true : false;
+
+    const jobData = await Job.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'content', 'job_id', 'user_id', 'date_created'],
+          include: {
+            model: User,
+            attributes: ['username', 'picture']
+          }
+        },
+        {
+          model: User,
+          attributes: ['username', 'picture']
         }],
     });
 
@@ -125,9 +199,11 @@ router.get('/:id', withAuth, async (req, res) => {
 
     const job = jobData.get({ plain: true });
 
-    res.render('singleJob', {
+    res.render('editJob', {
       job,
+      userValues,
       logged_in: req.session.logged_in,
+      checkCustomer,
     });
 
     res.status(200);
@@ -153,5 +229,6 @@ router.post('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;
