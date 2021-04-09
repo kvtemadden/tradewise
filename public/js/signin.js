@@ -18,7 +18,7 @@ const loginForm = async (e) => {
       // If successful, redirect user to dashboard page
       document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+      toastr.info(response.statusText);
     }
   }
 };
@@ -44,7 +44,7 @@ const generatePassword = async (e) => {
         let password = await response.text();
         document.querySelector('#signup-password').value = password;
       } else {
-        alert(response.statusText);
+        toastr.error(response.statusText);
       }
     })
 };
@@ -87,7 +87,7 @@ const signupForm = async (e) => {
       // If successful, redirect user to dashboard page
       document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+      toastr.error(response.statusText);
     }
   }
 };

@@ -21,11 +21,11 @@ const updateJob = async (event) => {
     })
 
     if (response.ok) {
-      alert('Post updated!');
+      toastr.success('Post updated!');
       document.location.replace(`/jobs/${id}`);
     
     } else {
-      alert('Failed to update post');
+      toastr.error('Failed to update post');
     }
 };
 

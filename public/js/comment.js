@@ -16,12 +16,12 @@ const postComment = async (event) => {
 
     //adds to db.json
     if (response.ok) {
-      alert('Reply posted!');
+      toastr.success('Reply posted!');
       location.reload();
       return false;
     
     } else {
-      alert('Failed to post comment');
+      toastr.error('Failed to post comment');
     }
 };
 

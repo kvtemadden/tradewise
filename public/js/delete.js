@@ -16,11 +16,11 @@ const deleteJob = async (event) => {
     })
 
     if (response.ok) {
-      alert('Job deleted!');
+      toastr.success('Job deleted!');
       document.location.replace('/dashboard');
     
     } else {
-      alert('Failed to deleted job');
+      toastr.error('Failed to deleted job');
     }
 };
 
