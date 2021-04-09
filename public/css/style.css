@@ -72,7 +72,7 @@ img {
 }
 
 .footer {
-    position: inherit;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -230,4 +230,16 @@ img {
   background-color: #f8f9fa;
   padding: 20px;
   word-break: break-word;
+}
+
+.jobBtns {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.jobBtns:hover {
+  text-decoration: none;
+  color: #007bff;
+  cursor: pointer;
+  border-bottom: solid 2px #007bff;
 }

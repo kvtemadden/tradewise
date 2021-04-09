@@ -11,7 +11,6 @@ router.get('/new', withAuth, async (req, res) => {
     });
   }
   catch (err) {
-    console.log(err);
     res.status(400).json(err);
   }
 });
@@ -65,25 +64,25 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 // Updating a job record
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/edit/:id', withAuth, async (req, res) => {
   try {
-    const newJob = await Job.update(req.body, {
+    const thisJob = await Job.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
 
-    newJob.title = req.body.jobTitle;
-    newJob.description = req.body.jobDescription;
+    thisJob.title = req.body.title;
+    thisJob.description = req.body.description;
 
-    if (!newJob) {
+    if (!thisJob) {
       res.status(404).json({
         message: 'No job found with this id!'
       });
       return;
     }
 
-    res.status(200).json(newJob);
+    res.status(200).json(thisJob);
   }
   catch (err) {
     res.status(500).json(err);
@@ -124,8 +123,53 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 
     const job = jobData.get({ plain: true });
+    const isUserJob = req.session.user_id == job.user_id ? true : false;
 
     res.render('singleJob', {
+      job,
+      logged_in: req.session.logged_in,
+      isUserJob,
+    });
+
+    res.status(200);
+  }
+  catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/edit/:id', withAuth, async (req, res) => {
+  try {
+    const jobData = await Job.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'content', 'job_id', 'user_id', 'date_created'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+        {
+          model: User,
+          attributes: ['username']
+        }],
+    });
+
+    if (!jobData) {
+      res.status(404).json(
+        {
+          message: 'No job found with this id!'
+        });
+      return;
+    }
+
+    const job = jobData.get({ plain: true });
+
+    res.render('editJob', {
       job,
       logged_in: req.session.logged_in,
     });

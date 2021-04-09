@@ -1,4 +1,4 @@
-const createJob = async (event) => {
+const updateJob = async (event) => {
   event.preventDefault();
 
   var title = document.querySelector('#newJobTitle').innerHTML;

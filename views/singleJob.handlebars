@@ -3,7 +3,7 @@
         <div class="centre-pane">
                 <div class="row">         
                         <h3 class="col-12 px-3 jobPostTitle">{{job.title}}</h3>
-                        <h6 class="col-12 px-3 jobPostInfo">Posted by: {{job.user.username}}</h6>
+                        <h6 class="col-12 px-3 jobPostInfo">Posted by: {{job.user.username}} {{#if isUserJob}} | <a href="/jobs/edit/{{job.id}}" class="jobBtns" id="edit">Edit job</a> | <span class="jobBtns" id="delete">Delete job</span> {{/if}}</h6>
 
                         <p class="col-12 mt-3 p-3 jobPostDesc">{{job.description}}</p>
                 </div>
@@ -12,3 +12,4 @@
 </section>
 
 <script src="/js/comment.js"></script>
+<script src="/js/delete.js"></script>
