@@ -11,6 +11,7 @@ const updateProfile = async (event) => {
   var username = document.querySelector('#newUsername').innerHTML;
   var email = document.querySelector('#newEmail').innerHTML;
   var password = document.querySelector('#newPassword').innerHTML;
+  var role_id = document.querySelector('#newRole').value;
 
     const response = await fetch("/user/" + id, {
       method: 'PUT',
@@ -20,6 +21,7 @@ const updateProfile = async (event) => {
         username: username,
         password: password,
         email: email,
+        role_id: role_id,
       }),
       headers: { 'Content-Type': 'application/json' },
     })

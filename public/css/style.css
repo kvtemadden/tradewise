@@ -265,6 +265,7 @@ img {
 .pp {
   max-width: 20%;
   max-height: 128px;
+  border-radius: 50%;
 }
 
 .nav-profile .pp {
@@ -298,4 +299,20 @@ padding-top: 5px;
   max-height: 50px;
   float: left;
   margin-right: 10px;
+  border-radius: 50%;
+}
+
+.flt-r {
+  float: right;
+}
+
+.sm-badge {
+  font-size: 12px;
+  padding: .5rem;
+  height: 20px;
+  line-height: .4;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1rem;
 }

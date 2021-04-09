@@ -25,7 +25,8 @@
     "hbs": "^4.1.1",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "toastr": "^2.1.4"
   },
   "devDependencies": {
     "eslint": "^7.12.1",
