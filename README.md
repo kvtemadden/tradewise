@@ -10,8 +10,8 @@
 - [Tests](#tests)
 - [License](#license)
 ---
-## Demo of deployed app:
-![gif placeholder]()
+## Screenshot of deployed app:
+![Screenshot of working tradewise app](/public/images/projectscreenshot.PNG)
 
 ## Description:
 
