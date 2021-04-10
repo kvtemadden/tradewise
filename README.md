@@ -13,6 +13,10 @@
 ## Screenshot of deployed app:
 ![Screenshot of working tradewise app](/public/images/projectscreenshot.PNG)
 
+You can access the Tradewise app [here](https://uob-tradewise.herokuapp.com/dashboard)
+
+You can access the GitHub Repo via [this link](https://github.com/kvtemadden/tradewise)
+
 ## Description:
 
 The aim of Tradewise is to provide a simple and easy to use platform, for customers to find
