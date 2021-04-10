@@ -10,8 +10,12 @@
 - [Tests](#tests)
 - [License](#license)
 ---
-## Demo of deployed app:
-![gif placeholder]()
+## Screenshot of deployed app:
+![Screenshot of working tradewise app](/public/images/projectscreenshot.PNG)
+
+You can access the Tradewise app [here](https://uob-tradewise.herokuapp.com/dashboard)
+
+You can access the GitHub Repo via [this link](https://github.com/kvtemadden/tradewise)
 
 ## Description:
 
