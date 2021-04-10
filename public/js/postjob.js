@@ -16,11 +16,11 @@ const createJob = async (event) => {
     })
 
     if (response.ok) {
-      toastr.info('Post created!');
+      toastr.success('Post created!');
       document.location.replace('/dashboard');
     
     } else {
-      toastr.info('Failed to create post');
+      toastr.error('Failed to create post');
     }
 };
 
