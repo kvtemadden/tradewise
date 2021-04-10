@@ -1,0 +1,48 @@
+<section>
+  <div class="container pmw centre-pane">
+      <div>
+      <h2>Profile Picture</h2>
+      <img class="pp" id="profile-pic" src="{{userValues.picture}}">
+      <p class="mt-4 editable border rounded p5" contenteditable="true" id="newPicture"
+        data-placeholder="Enter the URL to an image"></p>
+      <button type="button" class="btn mb-3 btn-secondary" id="preview">Click to preview image</button>
+    </div> 
+    <div>
+      <h2>Username</h2>
+      <p class="editable border rounded p5" contenteditable="true" id="newUsername"
+        data-placeholder="Enter a job title">{{userValues.username}}</p>
+    </div>    
+    <div class="mb-3">
+          <label><h2>I am a...</h2></label>
+          <select id="newRole" class="custom-select" required>
+            <option value="">Choose...</option>
+            <option value="1">Customer</option>
+            <option value="2">Electrician</option>
+            <option value="3">Carpenter</option>
+            <option value="4">Glazier</option>
+            <option value="5">Gardener</option>
+            <option value="6">Plumber</option>
+            <option value="7">Builder</option>
+            <option value="8">Plasterer</option>
+            <option value="9">Decorator</option>
+          </select>
+        </div>
+    <div>
+      <h2>Email</h2>
+      <p class="editable border rounded p5" contenteditable="true" id="newEmail"
+        data-placeholder="Enter a job title">{{userValues.email}}</p>
+    </div>    
+    <div>
+      <h2>Password</h2>
+      <p class="editable border rounded p5" contenteditable="true" id="newPassword"
+        data-placeholder="Enter a new password... (ONLY IF YOU WANT TO UPDATE, ELSE LEAVE BLANK)"></p>
+    </div>
+    <div class="row mt-5">
+      <button class="button btn-primary align-center btn" id="updateProfile">Update</button>
+    </div>
+
+  </div>
+
+</section>
+
+<script src="/js/updateProfile.js"></script>

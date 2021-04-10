@@ -5,15 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tradewise</title>
-
+    <link rel="shortcut icon" type="image/jpg" href="/images/tradewise-01.png"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="/">Tradewise</a>
+          <a class="navbar-brand" href="/"><img class="logo" src="/images/tradewise-02.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,7 +28,11 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    {{#if checkCustomer}}
+                    <a class="nav-link" href="/dashboard">My jobs</a>
+                    {{else}}
                     <a class="nav-link" href="/dashboard">Find a Job</a>
+                    {{/if}}
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/jobs/new">Post a Job</a>
@@ -33,24 +40,28 @@
             </ul>
             <ul class="nav navbar-nav ml-auto justify-content-end">
                 {{#if logged_in}}
+                <div class="nav-profile">
+                <a href="/user/{{userValues.id}}" class="profile-hover"><img class="pp" src="{{userValues.picture}}">
+                <p class="ml-1 mr-3 headline">{{userValues.username}}</p></a>
+                </div>
                 <li><button ahref="/signout" class="btn" id="signout">Logout</button></li>
                 {{else}}
                 <li><button ahref="/signin" class="btn" id="signin">Login/Sign Up</button></li>
-               {{/if}}
+                {{/if}}
             </ul>
         </div>
     </nav>
 
 
-<main class="container container-fluid">
-    {{{ body }}}
-</main>
+    <main class="container container-fluid">
+        {{{ body }}}
+    </main>
 
-<footer class="footer">
-    <div class="container">
-        <span class="text-muted">Tradewise Footer </span>
-    </div>
-</footer>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">&copy Tradewise | <span id="rights">All Rights Reserved 2021</span></span>
+        </div>
+    </footer>
 
 </body>
 {{#if logged_in}}
@@ -58,7 +69,16 @@
 {{else}}
 <script src="/js/signinbtn.js"></script>
 {{/if}}
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+
 </html>

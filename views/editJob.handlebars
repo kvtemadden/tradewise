@@ -1,0 +1,28 @@
+{{!-- Actual job page (when you click on a job, you see the job info/comments) --}}
+<section>
+        <div class="centre-pane">
+                <div class="row">         
+                        <h3 class="col-12 px-3 jobPostTitle editable" contenteditable="true">{{job.title}}</h3>
+                        <h6 class="col-12 px-3 jobPostInfo mb-4">Posted by: {{job.user.username}} | <a href="/jobs/{{job.id}}" class="jobBtns">Back to job post</a> | <span class="jobBtns" id="delete">Delete job</span></h6>
+                <div class="mb-4">
+                                <label class="label" id="{{job.role_id}}">Job Category</label>
+                                <select id="job-type" class="custom-select">
+                                <option value="0">Choose...</option>
+                                <option value="2">Electrician</option>
+                                <option value="3">Carpenter</option>
+                                <option value="4">Glazier</option>
+                                <option value="5">Gardener</option>
+                                <option value="6">Plumber</option>
+                                <option value="7">Builder</option>
+                                <option value="8">Plasterer</option>
+                                <option value="9">Decorator</option>
+                                </select>
+                        </div>
+                        <p class="col-12 mt-3 p-3 jobPostDesc editable" contenteditable="true">{{job.description}}</p>
+                        <button class="btn btn-left btn-primary mt-2 mb-4" id="updateJob">Update Job</button>
+                </div>
+        </div>
+</section>
+
+<script src="/js/update.js"></script>
+<script src="/js/delete.js"></script>
