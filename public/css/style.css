@@ -3,6 +3,7 @@
 }
 
 body {
+  margin-bottom: 5rem;
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 
@@ -238,7 +239,7 @@ body {
   background-color: rgba(136, 201, 242, 0.4);
   border-radius: 12px;
   padding: 10px;
-  border: 5px solid #fff;
+  border: 5px solid #d5dfe4;
 }
   
  .editable:empty:before {
