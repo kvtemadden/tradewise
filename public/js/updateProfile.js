@@ -27,11 +27,11 @@ const updateProfile = async (event) => {
     })
 
     if (response.ok) {
-      alert('Profile updated!');
+      toastr.success('Profile updated!');
       document.location.replace(`/dashboard`);
     
     } else {
-      alert('Failed to update profile');
+      toastr.error('Failed to update profile');
     }
 };
 
