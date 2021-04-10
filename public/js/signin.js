@@ -2,12 +2,12 @@
 const loginForm = async (e) => {
   e.preventDefault();
 
-  // Retrieve values from the login form
+  // Retrieves values from the login form
   const email = document.querySelector('#signin-email').value.trim();
   const password = document.querySelector('#signin-password').value.trim();
 
   if (email && password) {
-    // Send POST request to the 'user' endpoint
+    // Sends POST request to the 'user' endpoint
     const response = await fetch('/user/signin', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
@@ -15,7 +15,7 @@ const loginForm = async (e) => {
     });
 
     if (response.ok) {
-      // If successful, redirect user to dashboard page
+      // If successful, redirects user to dashboard page
       document.location.replace('/dashboard');
     } else {
       toastr.info(response.statusText);
@@ -23,7 +23,7 @@ const loginForm = async (e) => {
   }
 };
 
-// Check password length when user tries to submit form
+// Checks password length when user tries to submit form
 const checkPassword = () => {
   let passwordInput = document.querySelector('#signup-password').value;
   if (passwordInput.length < 8) {
@@ -32,7 +32,7 @@ const checkPassword = () => {
   return;
 }
 
-/* Fetch server endpoint and response. Populate password input
+/* Fetches server endpoint and response. Populates password input
    within signup form. */
 const generatePassword = async (e) => {
   e.preventDefault();
@@ -44,12 +44,13 @@ const generatePassword = async (e) => {
         let password = await response.text();
         document.querySelector('#signup-password').value = password;
       } else {
-        toastr.error(response.statusText);
+      
+        toastr.info(response.statusText);
       }
     })
 };
 
-// Hide passwords when user moves onto role drop-down box
+// Hides passwords when user moves onto role drop-down box
 document
   .querySelector('#signup-role')
   .addEventListener('change', (e) => {
@@ -58,6 +59,7 @@ document
     if (passwordInput.value != '') {
       passwordInput.setAttribute('type', 'password');
     }
+    
     if (passwordInput.value.length < 8) {
       toastr.info('Please choose a password that is at least 8 characters long');
       passwordInput.value = '';
@@ -76,7 +78,7 @@ const signupForm = async (e) => {
   const is_customer = role_id == 1 ? true : false;
 
   if (username && email && password && role_id) {
-    // Send POST request to the 'user' endpoint
+    // Sends a POST request to the 'user' endpoint
     const response = await fetch('/user/signup', {
       method: 'POST',
       body: JSON.stringify({ username, email, password, role_id, is_customer }),
@@ -84,15 +86,15 @@ const signupForm = async (e) => {
     });
 
     if (response.ok) {
-      // If successful, redirect user to dashboard page
       document.location.replace('/dashboard');
     } else {
-      toastr.error(response.statusText);
+      toastr.info(response.statusText);
+      
     }
   }
 };
 
-/* Listen out for a form submission on the signin.handlebars page.
+/* Listens out for a form submission on the signin.handlebars page.
    If form is submitted then execute relevant function. */
 document
   .querySelector('.signin-form')
@@ -102,7 +104,7 @@ document
   .querySelector('.signup-form')
   .addEventListener('submit', signupForm);
 
-/* Listen out for button click for generating a secure password.
+/* Listens out for button click for generating a secure password.
    Execute function when clicked. */
 document
   .querySelector('#gen')
