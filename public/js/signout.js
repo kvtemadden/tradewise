@@ -8,7 +8,7 @@ const signout = async () => {
     document.location.replace('/signin');
   } 
   else {
-    alert('Failed to log out');
+    toastr.info('Failed to log out');
   }
 };
 

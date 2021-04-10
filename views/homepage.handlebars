@@ -1,9 +1,9 @@
 {{!-- Landing page - Find a job / Post a job --}}
 
 <div class="hero-image">
-    <div class="hero-text">
-        <h1>TRADEWISE</h1>
-        <div class="flex-container">
+  <div class="hero-text">
+    <h1>TRADEWISE</h1>
+    <div class="flex-container">
 
             <div class="flex-child one">
                 Looking for a professional?
@@ -16,6 +16,7 @@
             </div>
         </div>
     </div>
+  </div>
 </div>
 
 <div class="container-fluid justify-content-center header">
@@ -40,49 +41,79 @@
                 <p class="number">3</p>
                 <div class="title">
                     <h4>Get the help you need </h4>
-                    <p>Leave a review once you've finished!</p>
+                    <p>Recommend to your friends!</p>
                 </div>
             </div>
         </div>
-    </div>
-</div> 
-
-<section>
-  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="/images/Electrical-Services-2019.jpg" class="d-block w-100" alt="...">
       </div>
-      <div class="carousel-item active">
-        <p>"I needed a plumber, after a toilet catastrophe. I found someone on Tradewise and they sorted the
-          blockage, pronto!"</p>
-      </div>
-      <div class="carousel-item">
-        <img src="public\images\find-a-tradesman-online-1.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item active">
-        <p>"Tradewise saved our marriage..."</p>
-      </div>
-      <div class="carousel-item">
-        <img src="public\images\Mustgroups-local-tradesmen-services.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item active">
-        <p>"Tradewise is like 'Tinder' only with handier men..."</p>
-      </div>
-      <div class="carousel-item">
-        <img src="public\images\Tradesmenwated.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item active">
-        <p>"We invited a Tradewise tradesman into our home and we've never looked back!"</p>
-      </div>
-      <div class="carousel-item">
-        <img src="public\images\what-is-a-tradesmen-services.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item active">
-        <p>"If you're useless around the house and you need someone who isn't, Tradewise is the place to find them."</p>
-      </div>
-    </div>
   </div>
-</section>
+</div>
+
+{{!-- Carousel --}}
+<div class="container">
+	<div class="row">
+		<div class="col-md-9 col-center">
+			<h2><span>Trades</span></h2>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+				<!-- Carousel indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>   
+				<!-- Wrapper for carousel items -->
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="row">
+							<div class="col-sm-4">
+                <div class="img-box"><img src="/images/carousel_image1.jpg" class="img-responsive d-block w-100 h-100" alt=""></div>
+                </div>
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="row">
+							<div class="col-sm-4">
+                <div class="img-box"><img src="/images/carousel_image2.jpg" class="img-responsive d-block w-100 h-100" alt=""></div>
+                </div>
+						</div>
+					</div>
+
+					<div class="item">
+						<div class="row">
+							<div class="col-sm-4">
+                <div class="img-box"><img src="/images/carousel_image3.jpg" class="img-responsive d-block w-100 h-100" alt=""></div>
+                </div>
+						</div>
+					</div>
+
+          	<div class="item">
+						<div class="row">
+							<div class="col-sm-4">
+                <div class="img-box"><img src="/images/carousel_image4.jpg" class="img-responsive d-block w-100 h-100" alt=""></div>
+                </div>
+						</div>
+					</div>
+
+          	<div class="item">
+						<div class="row">
+							<div class="col-sm-4">
+                <div class="img-box"><img src="/images/carousel_image5.jpg" class="img-responsive d-block w-100 h-100" alt=""></div>
+                </div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Carousel controls -->
+				<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+					<i class="fa fa-chevron-left"></i>
+				</a>
+				<a class="carousel-control right" href="#myCarousel" data-slide="next">
+					<i class="fa fa-chevron-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
 
 <script src="/js/home.js"></script>
