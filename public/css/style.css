@@ -379,3 +379,9 @@ padding-top: 5px;
   margin-bottom: auto;
   margin-left: 1rem;
 }
+
+.carousel-inner {
+  width: 50%;
+  max-height: 600px;
+}
+
