@@ -3,8 +3,8 @@ const { Job, User, Role } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Main landing page for all traffic
-router.get('/', async (req, res) => {
-      const user = await User.findOne({
+router.get('/', (req, res) => {
+      const user = User.findOne({
         where: {
           id: req.session.user_id,
         },
